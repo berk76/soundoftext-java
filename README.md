@@ -1,5 +1,7 @@
 # soundoftext-java
 
+[![Build Status](https://travis-ci.com/berk76/soundoftext-java.svg?branch=master)](https://travis-ci.com/berk76/soundoftext-java)  
+
 A Java library for the [SoundOfText API](https://soundoftext.com/docs).
 
 ## How to build
