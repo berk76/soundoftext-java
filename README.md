@@ -24,7 +24,7 @@ Library uses following dependency:
 
 ## Usage
 
-Here is an example of usage:
+Here is an example of usage. This will download english pronunciation of "Hello World!" and store it in c:\hello_world.mp3.   
 
 ```java
 try {
@@ -40,7 +40,4 @@ try {
 **What voices does this support?**
 
 You can find a list of language codes in the [documentation for Sound of Text](https://soundoftext.com/docs#voices).  
-
-You could also use another package of mine called [google-tts-langauges](https://github.com/ncpierson/google-tts-languages)
-that is another JS library that exports all the language codes.
   
