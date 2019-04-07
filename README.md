@@ -35,6 +35,8 @@ try {
 }
 ```
 
+Also you can see small Java [Vocabulary](https://github.com/berk76/words) :notebook: which is using this library.
+
 ## FAQ
 
 **What voices does this support?**
