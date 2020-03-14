@@ -7,19 +7,14 @@ import org.json.JSONObject;
 
 public class Mp3Creator {
     
+    private Mp3Creator() {}
+    
     /* https://soundoftext.com/docs */
     private static String endpoint = "https://api.soundoftext.com";
-    private static boolean trustedInstalled = false;
     
     
     public static void createMp3(String text, String lang, String file) throws Mp3CreatorException {
-        
-        /* Install trusted manager to avoid problems with https certificate */
-        if (!trustedInstalled) {
-            HttpUtils.installTrustManager();
-            trustedInstalled = true;
-        }
-        
+
         /* Send text and get voice ID */
         JSONObject object = new JSONObject();
         object.put("engine", "Google");
@@ -40,6 +35,8 @@ public class Mp3Creator {
                 Thread.sleep(500);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Mp3Creator.class.getName()).log(Level.SEVERE, null, ex);
+                // Restore interrupted state...
+                Thread.currentThread().interrupt();
             }
             resp = HttpUtils.sendGet(endpoint + "/sounds/" + id);
         } while (resp.getString("status").equals("Pending"));

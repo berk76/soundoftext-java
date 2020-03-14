@@ -19,38 +19,8 @@ import org.json.JSONObject;
 
 public class HttpUtils {
 
-    
-    public static void installTrustManager() throws Mp3CreatorException {
-        TrustManager[] trustAllCerts = new TrustManager[]{
-            new X509TrustManager() {
-                @Override
-                public java.security.cert.X509Certificate[] getAcceptedIssuers() {
-                    return null;
-                }
+    private HttpUtils() {}
 
-                @Override
-                public void checkClientTrusted(java.security.cert.X509Certificate[] certs, String authType) {
-                    //No need to implement.
-                }
-
-                @Override
-                public void checkServerTrusted(java.security.cert.X509Certificate[] certs, String authType) {
-                    //No need to implement.
-                }
-            }
-        };
-
-        // Install the all-trusting trust manager
-        try {
-            SSLContext sc = SSLContext.getInstance("SSL");
-            sc.init(null, trustAllCerts, new java.security.SecureRandom());
-            HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
-        } catch (Exception ex) {
-            throw new Mp3CreatorException(ex.getMessage());
-        }
-    }
-    
-    
     public static JSONObject sendPost(String requestUrl, JSONObject requestData) throws Mp3CreatorException {
         JSONObject result = null;
         String output;
@@ -149,13 +119,12 @@ public class HttpUtils {
             if (responseCode == HttpURLConnection.HTTP_OK) {
                 byte[] buffer = new byte[4096];
                 int n;
-                InputStream input = conn.getInputStream();
-               
-                FileOutputStream output = new FileOutputStream(f);
-                while ((n = input.read(buffer)) != -1) {
-                    output.write(buffer, 0, n);
+
+                try (InputStream input = conn.getInputStream(); FileOutputStream output = new FileOutputStream(f)) {
+                    while ((n = input.read(buffer)) != -1) {
+                        output.write(buffer, 0, n);
+                    }
                 }
-                output.close();
             } else {
                 throw new Mp3CreatorException("Request to server returned " + responseCode);
             }
