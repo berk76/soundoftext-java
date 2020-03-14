@@ -7,6 +7,8 @@ import org.json.JSONObject;
 
 public class Mp3Creator {
     
+    private static final Logger LOGGER = Logger.getLogger(Mp3Creator.class.getName());
+    
     private Mp3Creator() {}
     
     /* https://soundoftext.com/docs */
@@ -34,7 +36,7 @@ public class Mp3Creator {
             try {
                 Thread.sleep(500);
             } catch (InterruptedException ex) {
-                Logger.getLogger(Mp3Creator.class.getName()).log(Level.SEVERE, null, ex);
+                LOGGER.log(Level.SEVERE, null, ex);
                 // Restore interrupted state...
                 Thread.currentThread().interrupt();
             }
