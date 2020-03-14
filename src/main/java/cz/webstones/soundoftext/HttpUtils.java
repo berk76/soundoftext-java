@@ -12,20 +12,18 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 
 public class HttpUtils {
     
-    private static final Logger LOGGER = Logger.getLogger(HttpUtils.class.getName());
-
-    private HttpUtils() {}
     private static final int GET = 0;
     private static final int POST = 1;
-
+    
+    private HttpUtils() {}
+    
+    
     public static JSONObject sendPost(String requestUrl, JSONObject requestData) throws Mp3CreatorException {
         return send(HttpUtils.POST, requestUrl, requestData);
     }
@@ -34,6 +32,7 @@ public class HttpUtils {
     public static JSONObject sendGet(String requestUrl) throws Mp3CreatorException {
         return send(HttpUtils.GET, requestUrl, new JSONObject());
     }
+    
     
     private static JSONObject send(int method, String requestUrl, JSONObject requestData) throws Mp3CreatorException {
         JSONObject result = null;
