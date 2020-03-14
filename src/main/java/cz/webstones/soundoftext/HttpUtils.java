@@ -77,7 +77,6 @@ public class HttpUtils {
             }
             
         } catch (Mp3CreatorException | IOException | JSONException ex) {
-            LOGGER.log(Level.SEVERE, null, ex);
             throw new Mp3CreatorException(ex.getMessage());
         } finally {
             if (conn != null) {
