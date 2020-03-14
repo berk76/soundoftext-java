@@ -32,7 +32,7 @@ public class HttpUtils {
     
     
     public static JSONObject sendGet(String requestUrl) throws Mp3CreatorException {
-        return send(HttpUtils.GET, requestUrl, null);
+        return send(HttpUtils.GET, requestUrl, new JSONObject());
     }
     
     private static JSONObject send(int method, String requestUrl, JSONObject requestData) throws Mp3CreatorException {
