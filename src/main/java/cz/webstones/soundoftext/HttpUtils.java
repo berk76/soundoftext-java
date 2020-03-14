@@ -11,6 +11,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -32,7 +33,7 @@ public class HttpUtils {
             conn.setDoOutput(true);
 
             try (DataOutputStream wr = new DataOutputStream(conn.getOutputStream()); 
-                    BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(wr, "UTF-8"))) {
+                    BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(wr, StandardCharsets.UTF_8))) {
                 writer.write(requestData.toString());
             }
 
