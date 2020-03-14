@@ -5,15 +5,13 @@ import java.io.BufferedWriter;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 
@@ -33,25 +31,26 @@ public class HttpUtils {
             conn.setRequestMethod("POST");
             conn.setDoOutput(true);
 
-            DataOutputStream wr = new DataOutputStream(conn.getOutputStream());
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(wr, "UTF-8"));
-            writer.write(requestData.toString());
-            writer.close();
+            try (DataOutputStream wr = new DataOutputStream(conn.getOutputStream()); 
+                    BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(wr, "UTF-8"))) {
+                writer.write(requestData.toString());
+            }
 
             int responseCode = conn.getResponseCode();
             if (responseCode == HttpURLConnection.HTTP_OK) {
-                BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                StringBuilder response = new StringBuilder();
-                while ((output = reader.readLine()) != null) {
-                    response.append(output);
+                StringBuilder response;
+                try (BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()))) {
+                    response = new StringBuilder();
+                    while ((output = reader.readLine()) != null) {
+                        response.append(output);
+                    }
                 }
-                reader.close();
                 result = new JSONObject(response.toString());
             } else {
                 throw new Mp3CreatorException("Request to server returned " + responseCode);
             }
             
-        } catch (Exception ex) {
+        } catch (Mp3CreatorException | IOException | JSONException ex) {
             throw new Mp3CreatorException(ex.getMessage());
         } finally {
             if (conn != null) {
@@ -77,19 +76,20 @@ public class HttpUtils {
 
             int responseCode = conn.getResponseCode();
             if (responseCode == HttpURLConnection.HTTP_OK) {
-                BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                StringBuilder response = new StringBuilder();
-                while ((output = reader.readLine()) != null) {
-                    response.append(output);
+                StringBuilder response;
+                try (BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()))) {
+                    response = new StringBuilder();
+                    while ((output = reader.readLine()) != null) {
+                        response.append(output);
+                    }
                 }
-                reader.close();
 
                 result = new JSONObject(response.toString());
             } else {
                 throw new Mp3CreatorException("Request to server returned " + responseCode);
             }
             
-        } catch (Exception ex) {
+        } catch (Mp3CreatorException | IOException | JSONException ex) {
             throw new Mp3CreatorException(ex.getMessage());
         } finally {
             if (conn != null) {
@@ -129,7 +129,7 @@ public class HttpUtils {
                 throw new Mp3CreatorException("Request to server returned " + responseCode);
             }
             
-        } catch (Exception ex) {
+        } catch (Mp3CreatorException | IOException ex) {
             throw new Mp3CreatorException(ex.getMessage());
         } finally {
             if (conn != null) {
