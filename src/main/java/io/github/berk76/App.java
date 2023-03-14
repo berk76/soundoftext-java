@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cz.webstones;
+package io.github.berk76;
 
-import cz.webstones.soundoftext.Mp3Creator;
-import cz.webstones.soundoftext.Mp3CreatorException;
+import io.github.berk76.soundoftext.Mp3Creator;
+import io.github.berk76.soundoftext.Mp3CreatorException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

@@ -1,7 +1,5 @@
-package cz.webstones.soundinfotext;
+package io.github.berk76.soundoftext;
 
-import cz.webstones.soundoftext.Mp3Creator;
-import cz.webstones.soundoftext.Mp3CreatorException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
