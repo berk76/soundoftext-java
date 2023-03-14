@@ -9,6 +9,6 @@ public class Mp3CreatorTest {
     @Test
     @DisplayName("Setup")
     public void testCreateMp3() throws Mp3CreatorException {
-        Mp3Creator.createMp3("Hello World!", "en-GB", "hello_world.mp3");
+        Mp3Creator.createMp3("Hello World!", "en-GB", "target/hello_world.mp3");
     }
 }
