@@ -1,4 +1,4 @@
-package cz.webstones.soundoftext;
+package io.github.berk76.soundoftext;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;

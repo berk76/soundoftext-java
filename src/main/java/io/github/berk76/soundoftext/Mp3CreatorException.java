@@ -1,4 +1,4 @@
-package cz.webstones.soundoftext;
+package io.github.berk76.soundoftext;
 
 
 public class Mp3CreatorException extends Exception {
