@@ -1,6 +1,6 @@
 # soundoftext-java
 
-![build](https://github.com/berk76/soundoftext-java/workflows/build/badge.svg) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=berk76_soundoftext-java&metric=alert_status)](https://sonarcloud.io/dashboard?id=berk76_soundoftext-java)    
+![build](https://github.com/berk76/soundoftext-java/workflows/build/badge.svg)
 
 A Java library for the [SoundOfText API](https://soundoftext.com/docs).
 

@@ -26,8 +26,8 @@ jobs:
         name: mp3 file
         path: target/hello_world.mp3
     
-    - name: SonarCloud
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      run: mvn --no-transfer-progress clean verify sonar:sonar
+    # - name: SonarCloud
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    #   run: mvn --no-transfer-progress clean verify sonar:sonar
