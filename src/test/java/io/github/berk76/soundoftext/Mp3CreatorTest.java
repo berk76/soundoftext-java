@@ -1,7 +1,5 @@
 package io.github.berk76.soundoftext;
 
-import io.github.berk76.soundoftext.Mp3Creator;
-import io.github.berk76.soundoftext.Mp3CreatorException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
