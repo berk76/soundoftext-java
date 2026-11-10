@@ -21,7 +21,7 @@ jobs:
       run: mvn --no-transfer-progress package --file pom.xml
 
     - name: Archive mp3 file
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v7
       with:
         name: mp3 file
         path: target/hello_world.mp3
